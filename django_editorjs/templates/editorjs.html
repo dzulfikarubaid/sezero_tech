@@ -1,0 +1,282 @@
+<div data-editorjs-wrapper>
+  <div data-editorjs-holder></div>
+  <textarea data-editorjs-input class="hidden" id="{{id}}" name="{{name}}">
+    {% if value %}
+        {{value|safe}}
+    {% endif %}
+  </textarea>
+  <script data-editorjs-config type="application/json">
+    {{editorjs_config|safe}}
+  </script>
+</div>
+<style>
+  /*GLOBAL*/
+[data-editorjs-wrapper] {
+  margin-top: -20px;
+    max-width: 800px;
+    width: 100%;
+    border-radius: 4px;
+    background: #fff;
+    color: #000;
+    padding: 1.2em;
+    display: inline-block;
+    /* justify-content: center; */
+    /* display: flex; */
+    margin:auto;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    border-style: none;
+    /* border: 1px solid #ccc; */
+}
+.hidden{
+  display: none;
+}
+
+  .form-control{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:100%;
+    position: relative;
+    margin:auto;
+  }
+  
+  .form-control input{
+    margin-bottom: -10px;
+    max-width: 730px;
+    width: 100%;
+    border-radius: 4px;
+    background: #fff;
+    color: #000;
+    padding: 5px 1.2em;
+    display: flex;
+    border-style: none;
+    /* border: 1px solid #ccc; */
+    margin:auto;
+    font-size: 32px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+  }
+  .form-control p:nth-child(2){
+    display: none;
+    height: fit-content;
+  }
+
+ textarea:focus, input:focus{
+    outline: none;
+}
+
+/*LIST*/
+body .codex-editor .cdx-list {
+    margin: 0;
+    padding-left: 40px;
+    outline: none;
+}
+body .codex-editor .cdx-list__item {
+    padding: 5.5px 0 5.5px 3px;
+    line-height: 1.6em;
+    list-style: inherit;
+}
+body .codex-editor .cdx-list--unordered {
+    list-style: disc;
+}
+body .codex-editor .cdx-list--ordered {
+    list-style: decimal;
+}
+body .codex-editor .cdx-list-settings {
+    display: flex;
+}
+body .codex-editor .cdx-list-settings .cdx-settings-button {
+    width: 50%;
+}
+/*HEADER*/
+body .codex-editor .ce-header {
+    padding: 1em 0;
+    margin: 0;
+    margin-bottom: -0.9em;
+    line-height: 1.5em;
+    outline: none;
+    background: transparent;
+    color: #000;
+    font-weight: 800;
+    text-transform: initial;
+}
+body .codex-editor h1.ce-header {
+    font-size: 2em;
+}
+body .codex-editor h2.ce-header {
+    font-size: 1.5em;
+}
+body .codex-editor h3.ce-header {
+    font-size: 1.17em;
+}
+body .codex-editor h4.ce-header {
+    font-size: 1.17em;
+}
+body .codex-editor h5.ce-header {
+    font-size: 1em;
+}
+body .codex-editor h6.ce-header {
+    font-size: 0.67em;
+}
+
+body .codex-editor blockquote {
+    border: initial;
+    margin: initial;
+    color: initial;
+    font-size: inherit;
+}
+
+body .codex-editor .link-tool__progress {
+    float: initial;
+    width: 100%;
+    line-height: initial;
+    padding: initial;
+}
+
+
+</style>
+<script>
+  (function () {
+  /**
+   * @param {Object} config
+   * @param {String} tool
+   * @param {Object} default_config
+   */
+  function extractToolConfig(config, tool, default_config) {
+    var result = Object.assign({}, default_config);
+    if (config && config.tools && config.tools[tool]) {
+      if (config.tools[tool].disabled) {
+        return undefined;
+      }
+      Object.assign(result, config.tools[tool]);
+    }
+    return result;
+  }
+
+  /**
+   * @param {Object} config
+   * @param {String} tool
+   */
+  function isDisabled(config, tool) {
+    return !!(
+      config &&
+      config.tools &&
+      config.tools[tool] &&
+      config.tools[tool].disabled
+    );
+  }
+
+  /**
+   * @param {HTMLDivElement} field_wrapper
+   */
+  function initEditorJsField(field_wrapper) {
+    var holder_el = field_wrapper.querySelector("[data-editorjs-holder]");
+    var input_el = field_wrapper.querySelector("[data-editorjs-input]");
+    var config_el = field_wrapper.querySelector("[data-editorjs-config]");
+    var config = JSON.parse(config_el.innerHTML.trim());
+    var tools = {paragraph: { config: { placeholder: 'Tell your story...' }
+                }}
+    if (!isDisabled(config, "Image")) {
+      tools.Image = extractToolConfig(config, "Image", {
+        class: ImageTool,
+        inlineToolbar: true,
+      });
+    }
+    if (!isDisabled(config, "Header")) {
+      tools.Header = extractToolConfig(config, "Header", {
+        class: Header,
+      });
+    }
+    if (!isDisabled(config, "Checklist")) {
+      tools.Checklist = extractToolConfig(config, "Checklist", {
+        class: Checklist,
+        inlineToolbar: true,
+      });
+    }
+    if (!isDisabled(config, "List")) {
+      tools.List = extractToolConfig(config, "List", {
+        class: List,
+        inlineToolbar: true,
+      });
+    }
+    if (!isDisabled(config, "Quote")) {
+      tools.Quote = extractToolConfig(config, "Quote", {
+        class: Quote,
+        inlineToolbar: true,
+      });
+    }
+    if (!isDisabled(config, "Raw")) {
+      tools.Raw = extractToolConfig(config, "Raw", {
+        class: RawTool,
+      });
+    }
+    if (!isDisabled(config, "Embed")) {
+      tools.Embed = extractToolConfig(config, "Embed", {
+        class: Embed,
+        inlineToolbar: true,
+      });
+    }
+    if (!isDisabled(config, "Delimiter")) {
+      tools.Delimiter = extractToolConfig(config, "Delimiter", {
+        class: Delimiter,
+      });
+    }
+    if (!isDisabled(config, "Warning")) {
+      tools.Warning = extractToolConfig(config, "Warning", {
+        class: Warning,
+        inlineToolbar: true,
+      });
+    }
+    if (!isDisabled(config, "Link")) {
+      tools.Link = extractToolConfig(config, "Link", {
+        class: LinkTool,
+      });
+    }
+    if (!isDisabled(config, "Marker")) {
+      tools.Marker = extractToolConfig(config, "Marker", {
+        class: Marker,
+      });
+    }
+    if (!isDisabled(config, "Attaches")) {
+      tools.Attaches = extractToolConfig(config, "Attaches", {
+        class: AttachesTool,
+      });
+    }
+    if (!isDisabled(config, "Table")) {
+      tools.Table = extractToolConfig(config, "Table", {
+        class: Table,
+        inlineToolbar: true,
+      });
+    }
+
+    const editor = new EditorJS({
+      holder: holder_el,
+      tools: tools,
+      data:
+        (input_el.value &&
+          input_el.value.trim() &&
+          JSON.parse(input_el.value.trim())) ||
+        undefined,
+      onChange: function () {
+        editor
+          .save()
+          .then(function (outputData) {
+            console.log(JSON.stringify(outputData));
+            input_el.value = JSON.stringify(outputData);
+          })
+          .catch(function (error) {
+            console.log("Saving failed: ", error);
+          });
+      },
+    });
+    
+  }
+
+  window.addEventListener("load", function () {
+    var editor_wrappers = document.querySelectorAll("[data-editorjs-wrapper]");
+    editor_wrappers.forEach(initEditorJsField);
+  });
+})();
+
+</script>

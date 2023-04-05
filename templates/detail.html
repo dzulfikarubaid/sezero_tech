@@ -1,0 +1,263 @@
+<form class="box">
+  <section class="header">
+    <div class="left">
+        <a href="" class="reallogo">.tech/blog</a>
+    </div>
+    <div class="right">
+        <nav>
+        <li><a class="button" href="/blog/edit/{{post.title}}/">Edit</a></li>
+        <li><a href="">Profile</a></li>
+        </nav>
+    </div>
+  </section>
+  <p>{{ user }}</p>
+  <h2 id="h2ost-title">{{post.title}}</h2>
+  <section id="post-body"></section>
+</form>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const postBody = document.getElementById("post-body");
+    console.log("{{post.body|escapejs}}");
+    let body = JSON.parse("{{post.body|escapejs}}");
+    let blocks = body.blocks;
+    console.log(blocks.length);
+
+    for (let index = 0; index <= blocks.length; index++) {
+      console.log(blocks[index], index);
+
+      switch (blocks[index].type) {
+        case "Header":
+          let head = document.createElement(`h${blocks[index].data.level}`);
+          head.textContent = blocks[index].data.text;
+          postBody.appendChild(head);
+          break;
+
+        case "Image":
+          let div = document.createElement("div");
+          let image = document.createElement("img");
+          let caption = document.createElement("small");
+          image.src = `${blocks[index].data.file.url}`;
+          image.style = "margin-top:10px;";
+          image.height = 200;
+          image.width = 200;
+          caption.textContent = blocks[index].data.caption;
+          caption.style = "margin-top:5px;";
+          div.appendChild(image);
+          div.appendChild(caption);
+          div.style = "width:30%;display:grid;place-items:center";
+          postBody.appendChild(div);
+          break;
+
+        case "List":
+          let list;
+          if (blocks[index].data.style == "unordered") {
+            list = document.createElement("ul");
+          } else {
+            list = document.createElement("ol");
+          }
+          for (const item in blocks[index].data.items) {
+            let li = document.createElement("li");
+            li.textContent = blocks[index].data.items[item];
+            list.appendChild(li);
+          }
+          postBody.appendChild(list);
+          break;
+
+        case "Raw":
+          let blockquote = document.createElement("blockquote");
+          let code = document.createElement("code");
+          let pre = document.createElement("pre");
+          pre.textContent = blocks[index].data.html;
+          pre.style.background = "#131313";
+          pre.style.color = "#dddddd";
+          pre.style.padding = "15px";
+          code.appendChild(pre);
+          postBody.appendChild(code);
+          break;
+
+        case "Attaches":
+          let parent = document.createElement("div");
+          parent.style =
+            "margin-top:10px;width:30%; padding:10px; border:1px solid black;border-radius:8px;";
+          let a = document.createElement("a");
+          let name = document.createElement("h4");
+          a.href = `${blocks[index].data.file.url}`;
+          a.textContent = `Download ${blocks[index].data.file.extension} (${
+            blocks[index].data.file.size / 1000
+          } kb)`;
+          a.style = "grid-column: 1 / span 2";
+          name.textContent = blocks[index].data.file.name;
+
+          parent.appendChild(name);
+          parent.appendChild(a);
+
+          postBody.appendChild(parent);
+          break;
+
+        case "paragraph":
+          const p = document.createElement("p");
+          p.innerHTML = blocks[index].data.text;
+          postBody.appendChild(p);
+          break;
+
+        case "Link":
+          let parent2 = document.createElement("div");
+          let a2 = document.createElement("a");
+          parent2.style =
+            " margin-top:10px; width:30%;display:grid; grid-template-columns: 1fr 50px; padding:10px; border:1px solid black;border-radius:8px;";
+
+          if (blocks[index].data.meta.title) {
+            let title = document.createElement("p");
+            title.textContent = blocks[index].data.meta.title;
+            parent2.appendChild(title);
+          }
+          if (blocks[index].data.meta.image.url !== "") {
+            let parent3 = document.createElement("div");
+            let img = document.createElement("img");
+
+            img.src = blocks[index].data.meta.image.url;
+            parent3.style = " display:grid;place-items:center";
+
+            img.height = 40;
+            img.width = 40;
+            parent3.appendChild(img);
+            parent2.appendChild(parent3);
+          }
+
+          if (blocks[index].data.meta.description) {
+            let desc = document.createElement("small");
+            desc.style = "grid-column: 1 / span 2";
+            desc.textContent = blocks[index].data.meta.description;
+            parent2.appendChild(desc);
+          }
+          a2.style = "text-decoration:none;color:black";
+          a2.href = blocks[index].data.link;
+          a2.appendChild(parent2);
+          postBody.appendChild(a2);
+          break;
+
+        default:
+          break;
+      }
+    }
+  });
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+  html{
+      scroll-behavior:smooth;
+  }
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  :root{
+      --color1: #03a9f4;
+      --color2: #ff0;
+      --color3: rgba(255,255,255,0.2);
+      --color4: rgba(0,0,0,0.1);
+      --color5: #fff;
+      --color6: #333;
+      --color7: #F43628;
+      --body-color: #fff;
+      --nav-color: #fff;
+      --side-nav: #1d261d;
+      --text-color: #1d261d;
+  }
+  
+  body{
+    overflow-x: hidden;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  .box{
+      width: 100%;
+      padding: 25px 100px;
+  }
+  .header{
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+       position: -webkit-sticky;
+      position: sticky;
+      padding-top: 20px;
+      top: 0;
+      padding-bottom: 20px;
+      z-index: 2;
+      background: white;
+  }
+  .left{
+      display: flex;
+      flex-direction: row;
+  }
+  .right{
+      display:flex ;
+      flex-direction: row;
+  }
+  .reallogo{
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--color6);
+      /* margin-right: 40px; */
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      
+  }
+  .reallogo span{
+  
+      color: var(--color6);
+  }
+  .button{
+      font-size: 16px;
+      font-weight: 300;
+      border-style: none;
+      text-decoration: none;
+      background: rgb(66, 123, 236);
+      color: white;
+      border-radius: 10px;
+      float: right;
+      width: fit-content;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      /* margin-top: 20px; */
+  }
+  /* .button:hover{
+      border: solid;
+      border-color: var(--color6);
+      border-width: 2px;
+      background: none;
+      color: var(--color1);
+  } */
+  nav{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+     
+  }
+  nav li{
+      list-style: none;
+      /* margin-right: 30px; */
+  }
+  nav li a{
+    font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      /* padding: 5px 10px; */
+      color: var(--color6);
+  }
+  nav li a:hover{
+      color: var(--color6);
+      border-bottom: solid;
+      border-width: 3px;
+      /* border-radius: 10px; */
+      /* padding: 5px 10px; */
+  }
+  
+  </style>
