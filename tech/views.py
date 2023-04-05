@@ -5,17 +5,6 @@ from bs4 import BeautifulSoup
 def index(request):
     return render(request,"sezero_tech.html")
 
-def test(request):
-    tes=''
-    try:
-        if request.method=="POST":
-            data = request.POST.get('data')
-            tes = data+"python"+"anywhere"
-    except:
-        tes="yoi bro"
-    
-    return render(request,"index.html",{'tes':tes})
-
 def scrape(request):
     data = []
     if request.method == 'POST':
