@@ -1,12 +1,7 @@
 {% for message in messages %}
 <h1>{{message}}</h1>
 {% endfor %}
-<script>
-    let popup = document.querySelector('.header');
-    popup.onclick = function(){
-        popup.classList.toggle('active')
-    }
-</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 html{
@@ -72,10 +67,19 @@ body{
 .left{
     display: flex;
     flex-direction: row;
+    visibility: hidden;
 }
 .right{
     display:flex ;
     flex-direction: row;
+    visibility: hidden;
+}
+.header:hover .left,
+.header:hover .right,
+.header .active .left,
+.header .active .right
+{
+    visibility: visible;
 }
 .reallogo{
     font-size: 20px;
@@ -214,7 +218,7 @@ li:hover ul{
 </style>
 
 <div class="box">
-  <section class="header">
+  <div class="header">
       <div class="left">
           <a href="" class="reallogo">sezero.tech</a>
       </div>
@@ -231,10 +235,16 @@ li:hover ul{
             <!-- <li><a href="">Profile</a></li> -->
           </nav>
       </div>
-  </section>
+    </div>
   <section class="content">
     <big>Rapidly build modern websites <br> without ever leaving your HTML.</big>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id provident obcaecati iure officia voluptates veniam cum! Quas itaque perspiciatis temporibus quam necessitatibus, doloribus, aliquid expedita eaque reprehenderit illum ipsa.</p>
     <a href="" class="button" style="text-align: center;">See my projects</a>
   </section>
 </div>
+<script>
+    let popup = document.querySelector('.header');
+    popup.onclick = function(){
+        popup.classList.toggle('active')
+    }
+</script>
