@@ -169,3 +169,5 @@ STATIC_ROOT = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+READ_DOT_ENV_FILE=True
+
