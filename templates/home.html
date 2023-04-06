@@ -72,9 +72,11 @@ body{
     display: flex;
     flex-direction: row;
     visibility: hidden;
+    opacity: 0;
     transition: 0.5s;
 }
 .right{
+    opacity: 0;
     display:flex ;
     flex-direction: row;
     visibility: hidden;
@@ -85,6 +87,7 @@ body{
 .header.active .left,
 .header.active .right
 {
+    opacity: 1;
     visibility: visible;
 }
 .reallogo{
