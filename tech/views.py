@@ -1,14 +1,16 @@
 from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
+from django.http import HttpResponseRedirect
 # Create your views here.
 def index(request):
     return render(request,"sezero_tech.html")
 def home_scrape(request):
     return render(request,"home_scrape.html")
 def scrape(request):
-    data = []
+    
     if request.method == 'POST':
+        data = []
         key = request.POST.get('q-url')
         headers = {
         'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
@@ -33,12 +35,11 @@ def scrape(request):
                 else:
                     result = 'https://cdn.numerade.com/ask_video/{}.mp4'.format(videoUrl)
                     data.append(result)
-    else:
-        error = 'fill the url correctly!'
-    data = ''.join(data)
-    data = str(data)
-    
-    return render(request,"scrape.html", {"data":data},{"error":error})
+        data = ''.join(data)
+        data = str(data)        
+        if key.is_valid():
+            return HttpResponseRedirect(data)
+    return render(request,"scrape.html", {"data":data})
 
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Post
