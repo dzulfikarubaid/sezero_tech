@@ -10,9 +10,9 @@
     <div class="box">
         <div class="left-box">
             <h1>Dezolver</h1>
-            <a href="">Numerade Solver</a>
-            <a href="">Brainly Solver</a>
-            <a href="">Chegg Solver</a>
+            <a href="" class="nume">Numerade Solver</a>
+            <a href="" class="brain">Brainly Solver</a>
+            <a href="" class="che">Chegg Solver</a>
         </div>
         <div class="right-box">
             <div class="numerade">
@@ -48,11 +48,20 @@
 </body>
 </html>
 <script>
-    const nume = document.querySelector('.numerade');
+    const numerade = document.querySelector('.numerade');
     const chegg = document.querySelector('.chegg');
+    const brainly = document.querySelector('.brain');
+    const nume = document.querySelector('.nume');
+    const che = document.querySelector('.che');
     const brain = document.querySelector('.brain');
     nume.onclick = function(){
-        nume.classList.toggle('active');
+        numerade.classList.toggle('active');
+    }
+    che.onclick = function(){
+        chegg.classList.toggle('active');
+    }
+    brain.onclick = function(){
+        brainly.classList.toggle('active');
     }
 </script>
 <style>
@@ -67,7 +76,7 @@ html{
     font-family: 'Poppins', sans-serif;
 }
 :root{
-    --color1: #03a9f4;
+    --color1: #fcdc4c;
     --color2: #ff0;
     --color3: rgba(255,255,255,0.2);
     --color4: rgba(0,0,0,0.1);
@@ -95,45 +104,10 @@ html{
     display: flex;
     text-align: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     gap: 50px;
 }
-.title{
-    margin-top: 100px;
-    font-size: 50px;
+.box-left{
+    background: var(--color1);
 }
-.answer{
-    text-decoration: none;
-    background: var(--color4);
-    color: var(--color6);
-    margin: auto;
-    border-radius: 10px;
-    padding: 5px 10px;
-    text-align: center;
-    justify-content: center;
-    font-size: 16px;
-}
-.button{
-    font-size: 16px;
-    text-decoration: none;
-    background: var(--color4);
-    color: var(--color6);
-    margin: auto;
-    border-radius: 10px;
-    padding: 5px 10px;
-    border-width: 0;
-    border-style: none;
-    cursor: pointer;
-
-}
-.url{
-    font-size: 16px;
-    text-decoration: none;
-    background: var(--color5);
-    color: var(--color6);
-    margin: auto;
-    border-radius: 10px;
-    padding: 2px 10px;
-}
-
 </style>
