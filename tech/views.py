@@ -23,11 +23,9 @@ def scrape(request):
                 if 'captions/' in list.text:
                     url = list.text.strip()
                     index = url.find("captions/")
-                    print(index)
                     start_index = index+9
                     end_index = start_index+36
                     url = url[start_index:end_index]
-                    print(url)
                     result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(url)
                     return redirect(result)
         else:
