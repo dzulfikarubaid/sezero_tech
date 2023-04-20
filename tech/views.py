@@ -17,25 +17,40 @@ def scrape(request):
         page = requests.get(key, headers=headers)
         soup = BeautifulSoup(page.text, 'html.parser')
         lists = soup.findAll('script')
-        for list in lists:
-            if 'videoUrl' in list.text:
-                videoUrl = list.text.strip()
-                index = videoUrl.find("videoUrl")
-                start_index = index+12
-                end_index = start_index+36
-                videoUrl = videoUrl[start_index:end_index]
+        listt = soup.findAll('track')
+        if 'track' in listt:
+            for list in listt:
+                if 'captions/' in list.text:
+                    url = list.text.strip()
+                    index = url.find("captions/")
+                    print(index)
+                    start_index = index+9
+                    end_index = start_index+36
+                    url = url[start_index:end_index]
+                    print(url)
+                    result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(url)
+                    return redirect(result)
+        else:
+            for list in lists:
+                if 'videoUrl' in list.text:
+                    videoUrl = list.text.strip()
+                    index = videoUrl.find("videoUrl")
+                    start_index = index+12
+                    end_index = start_index+36
+                    videoUrl = videoUrl[start_index:end_index]
 
-                result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(videoUrl)
-                result = requests.get(result,headers=headers)
-                if result.status_code == 200:
                     result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(videoUrl)
-                    data.append(result)
-                    return redirect(result)
-                    
-                else:
-                    result = 'https://cdn.numerade.com/ask_video/{}.mp4'.format(videoUrl)
-                    data.append(result)
-                    return redirect(result)
+                    result = requests.get(result,headers=headers)
+                    if result.status_code == 200:
+                        result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(videoUrl)
+                        data.append(result)
+                        return redirect(result)
+                        
+                    else:
+                        result = 'https://cdn.numerade.com/ask_video/{}.mp4'.format(videoUrl)
+                        data.append(result)
+                        return redirect(result)
+            # elif "https://s3-us-west-2.amazonaws.com/com.numerade.ask.transcription/captions/" in list.text:
     return render(request,"scrape.html")
 
 from django.shortcuts import render,redirect,get_object_or_404
