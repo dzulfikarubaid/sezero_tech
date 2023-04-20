@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 # Create your views here.
 def index(request):
     return render(request,"sezero_tech.html")
-
+def home_scrape(request):
+    return render(request,"home_scrape.html")
 def scrape(request):
     data = []
     if request.method == 'POST':

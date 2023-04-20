@@ -18,7 +18,7 @@ from django.urls import path, include
 from tech import views
 from django.contrib import admin
 from django.urls import path
-from tech.views import home,postdetail,uploadi,uploadf,upload_link_view,editpost, landing, projects, blog_home
+from tech.views import home,postdetail,uploadi,uploadf,upload_link_view,editpost, landing, projects, blog_home, home_scrape
 from django.views.decorators.csrf import csrf_exempt 
 
 from django.conf.urls.static import static
@@ -28,7 +28,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', landing),
-    path('dezolver/', views.scrape),
+    path('dezolver/', views.home_scrape),
+    path('dezolver/numerade/',views.scrape),
     path('accounts/', include('allauth.urls')),
     path('blog/',blog_home),
     path('blog/write/',home ),
