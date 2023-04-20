@@ -1,0 +1,486 @@
+{% for message in messages %}
+<h1>{{message}}</h1>
+{% endfor %}
+{% load static %} 
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+html{
+    scroll-behavior:smooth;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Poppins', sans-serif; */
+
+}
+:root{
+    --color1: #fcdc4c;
+    --color2: #ff0;
+    --color3: rgba(255,255,255,0.2);
+    --color4: rgba(0,0,0,0.1);
+    --color5: #fff;
+    --color6: #333;
+    --color7: #F43628;
+    --body-color: #fff;
+    --nav-color: #fff;
+    --side-nav: #1d261d;
+    --text-color: #1d261d;
+    --shadow: 0px 6px 27px -3px rgba(0,0,0,0.1);
+}
+
+body{
+  overflow-x: hidden;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.box{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    /* padding-top: 40px; */
+}
+.header{
+    display: flex;
+    width: 40px;
+    height: fit-content;
+    /* height: 60px; */
+    justify-content: space-between;
+    position: -webkit-sticky;
+    position: sticky;
+    padding: 15px 30px;
+    top: 10px;
+    border-radius: 25px;
+    z-index: 2;
+    border-style: groove;
+    border-width: 1px;
+    background: 0;
+    border-color: var(--color4);
+    box-shadow: var(--shadow);
+    margin: auto;
+    transition: 0.5s ease-in-out;
+    align-items: center;
+}
+.header:hover{
+    width: 1200px;
+    background: 0;
+    border-radius: 30px;
+    border-width: 0;
+}
+.header.active{
+    border-radius: 30px;
+    width: 1200px;
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    background: 0;
+}
+.header.keep{
+    border-radius: 30px;
+    width: 100%;
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    background: white;
+}
+.left{
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+.right{
+    opacity: 0;
+    display:flex ;
+    flex-direction: row;
+    visibility: hidden;
+    transition: 0.5s;
+}
+.header:hover .left,
+.header:hover .right,
+.header.active .left,
+.header.active .right
+{
+    border-style: none;
+    transition-delay: 0.5s;
+    opacity: 1;
+    visibility: visible;
+}
+.reallogo{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color6);
+    /* margin-right: 40px; */
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    
+}
+.reallogo span{
+
+    color: var(--color6);
+}
+.button{
+    border-style: none;
+    text-decoration: none;
+    /* background: var(--color6); */
+    color: var(--color6);
+    border-radius: 10px;
+    font-weight: 200;
+    width: fit-content;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: 'Poppins';
+    font-size: 20px;
+    text-decoration: underline;
+}
+.content p{
+    font-family: 'Poppins';
+    margin: 20px;
+    margin-bottom: 40px;
+}
+/* .button:hover{
+    border: solid;
+    border-color: var(--color6);
+    border-width: 2px;
+    background: none;
+    color: var(--color1);
+} */
+.login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #ff0;
+    width: 380px;
+    justify-content: center;
+    align-items: center;
+    /* padding: 20px 0px; */
+    /* display: none; */
+}
+.smallbox ul{
+    display: inline-block;
+}
+.smallbox li{
+    list-style: none;
+    margin-top: 30px;
+    width: 100%;
+    align-items: center;
+}
+.smallbox li a{
+    text-decoration: none;
+    color: var(--color6);
+}
+.content{
+    padding: 25px 100px;
+    margin-top: 70px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+img{
+   width: 400px;
+   height: auto;
+}
+.text{
+    text-align: right;
+    width: 600px;
+}
+.content big{
+    font-size: 50px;
+    font-weight: 1000;
+    font-family: 'Poppins', serif;
+    color: #000;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+   
+}
+nav li{
+    list-style: none;
+    /* margin-right: 30px; */
+}
+nav li a{
+  font-family: 'Poppins', sans-serif;
+  
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    color: var(--color6);
+    border-radius: 10px;
+}
+nav li a:hover{
+    box-shadow: var(--shadow);
+    background: var(--color5);
+    color: var(--color6);
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+.smallbox{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: var(--color5);
+    padding: 40px 40px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    min-width: 650px;
+    min-height: 700px;
+    text-align: center;
+    z-index: 2;
+}
+li ul{
+    visibility: hidden;
+    position: absolute;
+    /* left: 0; */
+    top: 48px;
+    z-index: 1;
+    opacity: 0;
+}
+li:hover ul{
+    visibility: visible;
+    opacity: 1;
+}
+</style>
+
+<div class="box" id="home">
+  <div class="header">
+      <div class="left">
+          <a href="" class="reallogo">Dezolver</a>
+      </div>
+      <div class="right">
+          <nav class="menu">
+            <li><a href="#home" class="hum">Home</a></li>
+            <li><a href="#work" class="wurk">Work</a></li>
+            <li><a href="#service" class="ser">Service</a></li>
+            <!-- <li><a href="">Profile</a></li> -->
+          </nav>
+      </div>
+    </div>
+  <section class="content">
+    <div class="text">
+        <big>Solve the <span style="color: var(--color1);">problems</span> and provide your friends with the <span style="color: var(--color1);">solutions</span>.</big>
+        <p style="text-align: justify;">Dezolver is a free website to unlock solutions from several websites. Dezolver takes the response data from the web in a legal way. Dezolver never performs hacking or cracking against the web target. The purpose of the dezolver is to help students to easily get answers from paid websites for free.</p>
+        <a href="" class="button" style="text-align: center;">let's try <span><svg width="30px" height="30px" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Arrow / Arrow_Circle_Right">
+            <path id="Vector" d="M13 15L16 12M16 12L13 9M16 12H8M21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12Z" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            </svg></span> </a>
+    </div>
+    <div class="img">
+        <img src="{% static 'kribo-puzzle.png' %}" alt="">
+    </div>
+  </section>
+  <section class="work" id="work">
+    <h1>HOW IT WORKS?</h1>
+    <div class="work-box">
+        <div class="box-1">
+            <img style="width:90px;margin-bottom: 10px;" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h24v24H0V0z%22%2F%3E%3Cpath%20d%3D%22M15.5%2014h-.79l-.28-.27C15.41%2012.59%2016%2011.11%2016%209.5%2016%205.91%2013.09%203%209.5%203S3%205.91%203%209.5%205.91%2016%209.5%2016c1.61%200%203.09-.59%204.23-1.57l.27.28v.79l5%204.99L20.49%2019l-4.99-5zm-6%200C7.01%2014%205%2011.99%205%209.5S7.01%205%209.5%205%2014%207.01%2014%209.5%2011.99%2014%209.5%2014z%22%2F%3E%3C%2Fsvg%3E" alt="">
+            <p>Search your question in Google</p>
+        </div>
+        <div class="box-2">
+            <img style="width:90px;margin-bottom: 10px;" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cg%20data-name%3D%22Layer%202%22%3E%3Cpath%20d%3D%22M27%2C30H11a3.0033%2C3.0033%2C0%2C0%2C1-3-3V11a3.0033%2C3.0033%2C0%2C0%2C1%2C3-3H27a3.0033%2C3.0033%2C0%2C0%2C1%2C3%2C3V27A3.0033%2C3.0033%2C0%2C0%2C1%2C27%2C30ZM11%2C10a1.0006%2C1.0006%2C0%2C0%2C0-1%2C1V27a1.0006%2C1.0006%2C0%2C0%2C0%2C1%2C1H27a1.0006%2C1.0006%2C0%2C0%2C0%2C1-1V11a1.0006%2C1.0006%2C0%2C0%2C0-1-1Z%22%2F%3E%3Cpath%20d%3D%22M5%2024a3.0033%203.0033%200%200%201-3-3V5A3.0033%203.0033%200%200%201%205%202H21a3.0033%203.0033%200%200%201%203%203%201%201%200%200%201-2%200%201.0006%201.0006%200%200%200-1-1H5A1.0006%201.0006%200%200%200%204%205V21a1.0006%201.0006%200%200%200%201%201%201%201%200%200%201%200%202zM23.2422%2021.4141a1%201%200%200%201-.7061-1.708l.3545-.3536A3%203%200%200%200%2018.6465%2015.11l-.3526.3535a1%201%200%200%201-1.416-1.4121l.3535-.3545a5%205%200%200%201%207.0723%207.07l-.3555.3545A.9977.9977%200%200%201%2023.2422%2021.4141zM17.2324%2025.7656a4.9981%204.9981%200%200%201-3.5361-8.5332l.3555-.3545a1%201%200%200%201%201.4121%201.416l-.3545.3536A3%203%200%200%200%2019.3535%2022.89l.3526-.3535a1%201%200%200%201%201.416%201.4121l-.3535.3545A4.9848%204.9848%200%200%201%2017.2324%2025.7656z%22%2F%3E%3Cpath%20d%3D%22M17.94%2C21.0605a1%2C1%2C0%2C0%2C1-.7071-1.707l2.8281-2.8281A1%2C1%2C0%2C0%2C1%2C21.4746%2C17.94l-2.8281%2C2.8281A.9967.9967%2C0%2C0%2C1%2C17.94%2C21.0605Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="">
+            <p>Copy the question URL</p>
+        </div>
+        <div class="box-3">
+            <img style="width:90px;margin-bottom: 10px;" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cpath%20d%3D%22M6%2014a1%201%200%200%200-1%201v14a1%201%200%200%200%201%201h20a1%201%200%200%200%201-1V15a1%201%200%200%200-1-1h-6a1%201%200%201%200%200%202h5v12H7V16h5a1%201%200%201%200%200-2z%22%20color%3D%22%23000%22%20font-family%3D%22sans-serif%22%20font-weight%3D%22400%22%20overflow%3D%22visible%22%20style%3D%22line-height%3Anormal%3Bfont-variant-ligatures%3Anormal%3Bfont-variant-position%3Anormal%3Bfont-variant-caps%3Anormal%3Bfont-variant-numeric%3Anormal%3Bfont-variant-alternates%3Anormal%3Bfont-feature-settings%3Anormal%3Btext-indent%3A0%3Btext-align%3Astart%3Btext-decoration-line%3Anone%3Btext-decoration-style%3Asolid%3Btext-decoration-color%3A%23000%3Btext-transform%3Anone%3Btext-orientation%3Amixed%3Bshape-padding%3A0%3Bisolation%3Aauto%3Bmix-blend-mode%3Anormal%22%2F%3E%3Cpath%20d%3D%22M15.986%202a1%201%200%200%200-.693.293l-5%205a1%201%200%201%200%201.414%201.414L15%205.414v15.572a1.001%201.001%200%201%200%202%200V5.414l3.293%203.293a1%201%200%201%200%201.414-1.414l-5-5a1%201%200%200%200-.72-.293z%22%20color%3D%22%23000%22%20font-family%3D%22sans-serif%22%20font-weight%3D%22400%22%20overflow%3D%22visible%22%20style%3D%22line-height%3Anormal%3Bfont-variant-ligatures%3Anormal%3Bfont-variant-position%3Anormal%3Bfont-variant-caps%3Anormal%3Bfont-variant-numeric%3Anormal%3Bfont-variant-alternates%3Anormal%3Bfont-feature-settings%3Anormal%3Btext-indent%3A0%3Btext-align%3Astart%3Btext-decoration-line%3Anone%3Btext-decoration-style%3Asolid%3Btext-decoration-color%3A%23000%3Btext-transform%3Anone%3Btext-orientation%3Amixed%3Bshape-padding%3A0%3Bisolation%3Aauto%3Bmix-blend-mode%3Anormal%22%2F%3E%3C%2Fsvg%3E" alt="">
+            <p>Submit on Dezolver</p>
+        </div>
+        <div class="box-4">
+            <img style="width:90px;margin-bottom: 10px;" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2060%2060%22%3E%3Cpath%20d%3D%22m58%2036-5.107-.035A5%205%200%200%200%2043.1%2036H38a2%202%200%200%200-2%202l-.035%205.107A5%205%200%200%200%2036%2052.9V58a2%202%200%200%200%202%202h5.1a2%202%200%200%200%201.96-1.623%203%203%200%200%201%205.872%200A2%202%200%200%200%2052.9%2060H58a2%202%200%200%200%202-2v-5.1a2%202%200%200%200-1.623-1.96%203%203%200%200%201-1.5-5.059%203.052%203.052%200%200%201%201.5-.812A2%202%200%200%200%2060%2043.105V38a2%202%200%200%200-2-2Zm-.035%207.108a5.042%205.042%200%200%200-2.5%201.35l-.01.01A5%205%200%200%200%2058%2052.9V58l-5.107-.035A5%205%200%200%200%2043.1%2058H38v-5.1a2%202%200%200%200-1.623-1.96%203%203%200%200%201%200-5.872A2%202%200%200%200%2038%2043.1V38h2v8a1%201%200%200%200%202%200v-8h1.1a2%202%200%200%200%201.96-1.623%203%203%200%200%201%205.872%200A2%202%200%200%200%2052.9%2038H58Z%22%2F%3E%3Cpath%20d%3D%22M3.965%2029.107A5%205%200%200%200%204%2038.9V44a2%202%200%200%200%202%202h5.1a2%202%200%200%200%201.96-1.623%203%203%200%200%201%205.872%200A2%202%200%200%200%2020.9%2046H26a2%202%200%200%200%202-2v-5.1a2%202%200%200%200-1.623-1.96%203%203%200%200%201%200-5.872A2%202%200%200%200%2028%2029.1V24h5.1a2%202%200%200%200%201.96-1.623%203%203%200%200%201%205.872%200A2%202%200%200%200%2042.9%2024H48a2%202%200%200%200%202-2l.035-5.107A5%205%200%200%200%2050%207.1V2a2%202%200%200%200-2-2h-5.1a2%202%200%200%200-1.96%201.623%203%203%200%200%201-5.872%200A2%202%200%200%200%2033.1%200H20.9a2%202%200%200%200-1.96%201.623%203%203%200%200%201-5.872%200A2%202%200%200%200%2011.1%200H6a2%202%200%200%200-2%202l-.035%205.107A5%205%200%200%200%204%2016.9V23ZM22%2034a5.023%205.023%200%200%200%204%204.9V44l-5.107-.035A5%205%200%200%200%2011.1%2044H6v-5.1a2%202%200%200%200-1.623-1.96%203%203%200%200%201%200-5.872A2%202%200%200%200%206%2029.1V24h2v8a1%201%200%200%200%202%200v-8h1.1a2%202%200%200%200%201.96-1.623%203%203%200%200%201%205.872%200A2%202%200%200%200%2020.9%2024H26l-.029%205.107A5.021%205.021%200%200%200%2022%2034ZM33.107%202.035A5.021%205.021%200%200%200%2038%206a5.052%205.052%200%200%200%204.91-4H48v5.1a2%202%200%200%200%201.623%201.96%203%203%200%200%201%200%205.872A2%202%200%200%200%2048%2016.9V22l-5.107-.035A5%205%200%200%200%2033.1%2022H28l.029-5.107A5%205%200%200%200%2028%207.1V2ZM2%2012a3.012%203.012%200%200%201%202.376-2.936A2%202%200%200%200%206%207.1V2l5.107.035A5%205%200%200%200%2020.9%202H26v5.1a2%202%200%200%200%201.623%201.96%203%203%200%200%201%200%205.872A2%202%200%200%200%2026%2016.9V22l-5.107-.029A5%205%200%200%200%2011.1%2022H6v-5.1a2%202%200%200%200-1.623-1.96A3.012%203.012%200%200%201%202%2012Z%22%2F%3E%3Cpath%20d%3D%22M9%2017a1%201%200%200%200%201-1V7a1%201%200%200%200-2%200v9a1%201%200%200%200%201%201zm0%2018a1%201%200%200%200-1%201v1a1%201%200%200%200%202%200v-1a1%201%200%200%200-1-1zm32%2014a1%201%200%200%200-1%201v1a1%201%200%200%200%202%200v-1a1%201%200%200%200-1-1zm-3-17a1%201%200%200%200%201-1v-2.586l.293.293a1%201%200%200%200%201.414-1.414l-2-2a1%201%200%200%200-1.414%200l-2%202a1%201%200%200%200%201.414%201.414l.293-.293V31a1%201%200%200%200%201%201zm-3%202a1%201%200%200%200-1-1h-2.586l.293-.293a1%201%200%200%200-1.414-1.414l-2%202a1%201%200%200%200%200%201.414l2%202a1%201%200%200%200%201.414-1.414L31.414%2035H34a1%201%200%200%200%201-1z%22%2F%3E%3C%2Fsvg%3E" alt="">
+            <p>Get solutions!</p>
+        </div>
+    </div>
+  </section>
+  <section class="service" id="service">
+    <h1 style="color:var(--color6);">SERVICES</h1>
+    <div class="ser-box">
+        <div class="box-x">
+            <img style="height:20px;margin-bottom: 20px;width:100%;" src="https://www.numerade.com/static/logos/logo-full-royal-on-white.ac63bc8717eb.svg" alt="">
+            <h1>Numerade Solver</h1>
+            <p style="text-align: justify;">Numerade is an online learning platform featuring video solutions to STEM questions created by top educators. Numerade has the world’s largest online library of STEM videos, with over 2 million short. <br><br>By using dezolver, students can get the numerade video solutions for free without a subscription.</p>
+            <a href="" class="submit">try now <img style="width:20px" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Cpath%20d%3D%22M16.8%2029c-.3%200-.5-.1-.7-.3-.4-.4-.4-1%200-1.4l7.3-7.3-7.3-7.3c-.4-.4-.4-1%200-1.4s1-.4%201.4%200l8%208c.4.4.4%201%200%201.4l-8%208c-.2.2-.5.3-.7.3z%22%2F%3E%3Cpath%20d%3D%22M20%2040C9%2040%200%2031%200%2020S9%200%2020%200c4.5%200%208.7%201.5%2012.3%204.2.4.3.5%201%20.2%201.4-.3.4-1%20.5-1.4.2C27.9%203.3%2024%202%2020%202%2010.1%202%202%2010.1%202%2020s8.1%2018%2018%2018%2018-8.1%2018-18c0-3.2-.9-6.4-2.5-9.2-.3-.5-.1-1.1.3-1.4.5-.3%201.1-.1%201.4.3C39%2012.9%2040%2016.4%2040%2020c0%2011-9%2020-20%2020z%22%2F%3E%3C%2Fsvg%3E" alt=""></a>
+        </div>
+        <div class="box-y">
+            <img style="height:30px;margin-bottom: 10px;width:100%;" src="https://styleguide.brainly.com/images/logos/brainly-0eeb28be95.svg" alt="">
+            <h1>Brainly Solver</h1>
+            <p >Brainly is the knowledge-sharing community where 300 million students and experts put their heads together to crack their toughest homework questions. You can ask your doubts and questions and other users will help you out. <br><br> Get brainly solution for free using Dezolver without register or subscribtion.
+            </p>
+            <a class="submit">try later</a>
+        </div>
+        <div class="box-y">
+            <img style="height:20px;margin-bottom: 20px;width:auto;" src="https://www.chegg.com/about/wp-content/uploads/2021/08/Chegg_logo_new-292x100.png" alt="">
+            <h1>Chegg Solver</h1>
+            <p >Chegg is one of the most popular educational apps for students. Not only does it help students rent textbooks, but it also provides access to various study materials. The tool also offers flashcards, homework explanations, and a lot more. <br><br> Get chegg solution for free using Dezolver without register or subscribtion.
+            </p>
+            <a class="submit">try later</a>
+        </div>
+    </div>
+  </section>
+  <section class="footer" style="background: var(--color1);font-family: 'Poppins';padding: 10px 40px;">
+    <p>&#169; Copyright 2023 Sezero.tech</p>
+  </section>
+</div>
+<style>
+    .service p{
+        margin-bottom: 30px;
+        text-align: justify;
+    }
+    .submit{
+        background: var(--color1);
+        padding: 10px 20px;
+        text-decoration: none;
+        color: var(--color6);
+        border-style: solid;
+        border-width: 1px;
+    }
+    .box-y .submit{
+        background: var(--color4);
+    }
+    .work{
+        font-family: 'Poppins';
+        justify-content: center;
+        text-align: center;
+        height: fit-content;
+        background-color: var(--color1);
+        margin-top: 5rem;
+        padding: 100px 50px;
+    }
+    .work h1{
+        margin-bottom: 50px;
+    }
+    .work-box{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        gap: 100px;
+    }
+    .box-1{
+        width: 200px;
+        height: 200px;
+        background-color: var(--color5);
+        box-shadow: var(--shadow);
+        border-radius: 20px;
+        padding: 20px;
+    }
+    .box-2{
+        width: 200px;
+        height: 200px;
+        background-color: var(--color5);
+        box-shadow: var(--shadow);
+        border-radius: 20px;
+        padding: 20px;
+    }
+    .box-3{
+        width: 200px;
+        height: 200px;
+        background-color: var(--color5);
+        box-shadow: var(--shadow);
+        border-radius: 20px;
+        padding: 20px;
+    }
+    .box-4{
+        width: 200px;
+        height: 200px;
+        background-color: var(--color5);
+        box-shadow: var(--shadow);
+        border-radius: 20px;
+        padding: 20px;
+    }
+    .service{
+        font-family: 'Poppins';
+        justify-content: center;
+        text-align: center;
+        height: fit-content;
+        /* background-color: var(--color1); */
+        margin-top: 5rem;
+        padding: 40px;
+        padding-top: 100px;
+        position: relative;
+    }
+    .service h1{
+        margin-bottom: 65px;
+    }
+    .ser-box{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        gap: 100px;
+    }
+    .box-x{
+        position: relative;
+        width: 350px;
+        height: 540px;
+        background-color: var(--color5);
+        box-shadow: var(--shadow);
+        border-radius: 20px;
+        padding: 40px;
+    }
+    .box-x h1{
+        margin-bottom: 20px;
+    }
+    .box-y h1{
+        margin-bottom: 20px;
+    }
+    .box-y{
+        position: relative;
+        width: 350px;
+        height: 540px;
+        background-color: var(--color5);
+        box-shadow: var(--shadow);
+        border-radius: 20px;
+        padding: 40px; 
+    }
+    .wurk:active{
+        color: var(--color1);
+        background: var(--color6);
+    }
+    .hum:active{
+        color: var(--color1);
+        background: var(--color6);
+    }
+    .ser:active{
+        color: var(--color1);
+        background: var(--color6);
+    }
+
+</style>
+<script>
+    // const popup = document.querySelector('.header');
+    // popup.onclick = function(){
+    //     popup.classList.toggle('active')
+    // }
+    const apa = document.querySelector('.hum');
+    apa.onclick = function(){
+        apa.classList.toggle('active')
+    }
+    const opo = document.querySelector('.wurk');
+    opo.onclick = function(){
+        opo.classList.toggle('active')
+    }
+    const pye = document.querySelector('.ser');
+    pye.onclick = function(){
+        pye.classList.toggle('active')
+    }
+</script>
