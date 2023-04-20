@@ -22,6 +22,7 @@
                 </div>
                 <form action="" method="post">
                     {% csrf_token %}
+                    <p>Input your numerade question url in here!</p>
                     <input type="text" name="q-url" class="answer">
                     <button type="submit" class="button">submit</button>
                     <a href="{{ data }}">solution</a>
@@ -95,9 +96,19 @@ html{
     opacity: 1;
     display: flex;
     flex-direction: column;
+    gap: 40px;
     visibility: visible;
     top: 40px;
     position: absolute;
+}
+.numerade .text{
+    width: 500px;
+}
+.numerade form{
+    display: flex;
+    flex-direction: column;
+    background: var(--color1);
+    border-radius: 20px;
 }
 .box{
     width: 100%;
@@ -121,6 +132,7 @@ html{
     cursor: pointer;
 }
 .right-box{
+    text-align: center;
     padding: 40px;
     width: 700px;
 }
