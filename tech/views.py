@@ -36,10 +36,7 @@ def scrape(request):
                     result = 'https://cdn.numerade.com/ask_video/{}.mp4'.format(videoUrl)
                     data.append(result)
                     return redirect(result)
-    data = ''.join(data)
-    data = str(data)
-    
-    return render(request,"scrape.html", {"data":data})
+    return render(request,"scrape.html")
 
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Post
