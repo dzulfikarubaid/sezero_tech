@@ -16,7 +16,7 @@
         </div>
         <div class="right-box">
             <div class="numerade">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio possimus repellendus illo dignissimos sed tenetur dolorem commodi ratione architecto ad, deserunt voluptatem culpa placeat, iste perspiciatis voluptate similique! Officia, est!</p>
+                <p>Numerade is an online learning platform featuring video solutions to STEM questions created by top educators. Numerade has the world’s largest online library of STEM videos, with over 2 million short. <br><br>By using dezolver, students can get the numerade video solutions for free without a subscription.</p>
                 <form action="" method="post">
                     {% csrf_token %}
                     <input type="text" name="q-url" class="answer">
@@ -25,22 +25,11 @@
                 </form>
             </div>
             <div class="brainly">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio possimus repellendus illo dignissimos sed tenetur dolorem commodi ratione architecto ad, deserunt voluptatem culpa placeat, iste perspiciatis voluptate similique! Officia, est!</p>
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <input type="text" name="q-url" class="answer">
-                    <button type="submit" class="button">submit</button>
-                    <a href="{{ data }}">solution</a>
-                </form>
+                <p>COMING SOON</p>
             </div>
             <div class="chegg">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio possimus repellendus illo dignissimos sed tenetur dolorem commodi ratione architecto ad, deserunt voluptatem culpa placeat, iste perspiciatis voluptate similique! Officia, est!</p>
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <input type="text" name="q-url" class="answer">
-                    <button type="submit" class="button">submit</button>
-                    <a href="{{ data }}">solution</a>
-                </form>
+                <p>COMING SOON</p>
+
             </div>
         </div>
     </div>
@@ -117,7 +106,7 @@ html{
     display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 400px;
+    width: fit-content;
     left:0;
     gap: 20px;
     padding: 40px;
@@ -125,9 +114,9 @@ html{
 .left-box a{
     text-decoration: none;
     cursor: pointer;
-    font-weight: 700;
 }
 .right-box{
+    padding: 40px;
     width: 700px;
 }
 </style>
