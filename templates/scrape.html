@@ -13,7 +13,7 @@
         <form action="" method="post">
             {% csrf_token %}
             <input type="text" name="q-url" class="answer">
-            <button type="submit" class="button">submit</button>
+            <a href="{{ data }}"><button type="submit" class="button">submit</button></a>
         </form>
         <p class="url">{{ data }}</p>
     </div>
