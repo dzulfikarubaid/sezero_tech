@@ -56,12 +56,18 @@
     const brain = document.querySelector('.brain');
     nume.onclick = function(){
         numerade.classList.toggle('active');
+        chegg.classList.remove('active');
+        brainly.classList.remove('active');
     }
     che.onclick = function(){
         chegg.classList.toggle('active');
+        numerade.classList.remove('active');
+        brainly.classList.remove('active');
     }
     brain.onclick = function(){
         brainly.classList.toggle('active');
+        chegg.classList.remove('active');
+        numerade.classList.remove('active');
     }
 </script>
 <style>
@@ -89,7 +95,6 @@ html{
     --text-color: #1d261d;
 }
 .numerade,.chegg,.brainly{
-    position: absolute;
     display: flex;
     flex-direction: column;
     opacity: 0;
