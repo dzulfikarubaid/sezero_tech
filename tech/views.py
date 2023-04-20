@@ -8,9 +8,8 @@ def index(request):
 def home_scrape(request):
     return render(request,"home_scrape.html")
 def scrape(request):
-    
+    data = []
     if request.method == 'POST':
-        data = []
         key = request.POST.get('q-url')
         headers = {
         'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
