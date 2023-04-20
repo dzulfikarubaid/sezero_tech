@@ -8,18 +8,53 @@
 </head>
 <body>
     <div class="box">
-        <h3>DEZOLVER</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio possimus repellendus illo dignissimos sed tenetur dolorem commodi ratione architecto ad, deserunt voluptatem culpa placeat, iste perspiciatis voluptate similique! Officia, est!</p>
-        <form action="" method="post">
-            {% csrf_token %}
-            <input type="text" name="q-url" class="answer">
-            <button type="submit" class="button">submit</button>
-            <a href="{{ data }}">solution</a>
-        </form>
+        <div class="left-box">
+            <h1>Dezolver</h1>
+            <a href="">Numerade Solver</a>
+            <a href="">Brainly Solver</a>
+            <a href="">Chegg Solver</a>
+        </div>
+        <div class="right-box">
+            <div class="numerade">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio possimus repellendus illo dignissimos sed tenetur dolorem commodi ratione architecto ad, deserunt voluptatem culpa placeat, iste perspiciatis voluptate similique! Officia, est!</p>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="q-url" class="answer">
+                    <button type="submit" class="button">submit</button>
+                    <a href="{{ data }}">solution</a>
+                </form>
+            </div>
+            <div class="brainly">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio possimus repellendus illo dignissimos sed tenetur dolorem commodi ratione architecto ad, deserunt voluptatem culpa placeat, iste perspiciatis voluptate similique! Officia, est!</p>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="q-url" class="answer">
+                    <button type="submit" class="button">submit</button>
+                    <a href="{{ data }}">solution</a>
+                </form>
+            </div>
+            <div class="chegg">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio possimus repellendus illo dignissimos sed tenetur dolorem commodi ratione architecto ad, deserunt voluptatem culpa placeat, iste perspiciatis voluptate similique! Officia, est!</p>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="q-url" class="answer">
+                    <button type="submit" class="button">submit</button>
+                    <a href="{{ data }}">solution</a>
+                </form>
+            </div>
+        </div>
     </div>
    
 </body>
 </html>
+<script>
+    const nume = document.querySelector('.numerade');
+    const chegg = document.querySelector('.chegg');
+    const brain = document.querySelector('.brain');
+    nume.onclick = function(){
+        nume.classList.toggle('active');
+    }
+</script>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 html{
@@ -43,6 +78,18 @@ html{
     --nav-color: #fff;
     --side-nav: #1d261d;
     --text-color: #1d261d;
+}
+.chegg{
+    visibility: hidden;
+}
+.brainly{
+    visibility: hidden;
+}
+.chegg:active{
+    visibility: visible;
+}
+.brainly:active{
+    visibility: visible;
 }
 .box{
     display: flex;
