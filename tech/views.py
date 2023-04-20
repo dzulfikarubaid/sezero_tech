@@ -30,10 +30,12 @@ def scrape(request):
                 if result.status_code == 200:
                     result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(videoUrl)
                     data.append(result)
+                    return redirect(result)
                     
                 else:
                     result = 'https://cdn.numerade.com/ask_video/{}.mp4'.format(videoUrl)
                     data.append(result)
+                    return redirect(result)
     data = ''.join(data)
     data = str(data)
     
