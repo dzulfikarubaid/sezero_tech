@@ -28,27 +28,14 @@ def scrape(request):
             end_index = start_index+36
             url = listt[start_index:end_index]
             result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(url)
-            return redirect(result)
-        else:
-            for list in lists:
-                if 'videoUrl' in list.text:
-                    videoUrl = list.text.strip()
-                    index = videoUrl.find("videoUrl")
-                    start_index = index+12
-                    end_index = start_index+36
-                    videoUrl = videoUrl[start_index:end_index]
-
-                    result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(videoUrl)
-                    result = requests.get(result,headers=headers)
-                    if result.status_code == 200:
-                        result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(videoUrl)
-                        data.append(result)
-                        return redirect(result)
-                        
-                    else:
-                        result = 'https://cdn.numerade.com/ask_video/{}.mp4'.format(videoUrl)
-                        data.append(result)
-                        return redirect(result)
+            result = requests.get(result,headers=headers)
+            if result.status_code == 200:
+                result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(url)
+                return redirect(result)
+            else:
+                result = 'https://cdn.numerade.com/ask_video/{}.mp4'.format(url)
+                data.append(result)
+                return redirect(result)
             # elif "https://s3-us-west-2.amazonaws.com/com.numerade.ask.transcription/captions/" in list.text:
     return render(request,"scrape.html")
 
