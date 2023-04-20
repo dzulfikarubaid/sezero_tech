@@ -18,16 +18,17 @@ def scrape(request):
         soup = BeautifulSoup(page.text, 'html.parser')
         lists = soup.findAll('script')
         listt = soup.findAll('track')
-        if 'track' in listt:
-            for list in listt:
-                if 'captions/' in list.text:
-                    url = list.text.strip()
-                    index = url.find("captions/")
-                    start_index = index+9
-                    end_index = start_index+36
-                    url = url[start_index:end_index]
-                    result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(url)
-                    return redirect(result)
+        listt = str(listt)
+        listt = listt.split(" ")
+        if 'kind="captions"' in listt:
+            print(True)
+            listt = str(listt)
+            index = listt.find("captions/")
+            start_index = index+9
+            end_index = start_index+36
+            url = listt[start_index:end_index]
+            result = 'https://cdn.numerade.com/encoded/{}.mp4'.format(url)
+            return redirect(result)
         else:
             for list in lists:
                 if 'videoUrl' in list.text:
