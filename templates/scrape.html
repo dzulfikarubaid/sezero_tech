@@ -15,7 +15,7 @@
             <a class="che">Chegg Solver</a>
         </div>
         <div class="right-box">
-            <p>{{ error }}</p>
+            
             <div class="numerade">
                 <div class="text">
                     <h1 style="font-size: 20px;">Numerade Solver</h1>
@@ -23,6 +23,7 @@
                 </div>
                 <form action="" method="post">
                     {% csrf_token %}
+                    <p>{{ error }}</p>
                     <p>Input your numerade question url in here!</p>
                     <input type="text" name="q-url" class="answer">
                     <button type="submit" class="button">submit</button>
