@@ -50,7 +50,7 @@
 <script>
     const numerade = document.querySelector('.numerade');
     const chegg = document.querySelector('.chegg');
-    const brainly = document.querySelector('.brain');
+    const brainly = document.querySelector('.brainly');
     const nume = document.querySelector('.nume');
     const che = document.querySelector('.che');
     const brain = document.querySelector('.brain');
@@ -88,23 +88,13 @@ html{
     --side-nav: #1d261d;
     --text-color: #1d261d;
 }
-.numerade{
-
+.numerade,.chegg,.brainly{
+    display: flex;
+    opacity: 0;
     visibility: hidden;
 }
-.numerade:active{
-    visibility: visible;
-}
-.chegg{
-    visibility: hidden;
-}
-.brainly{
-    visibility: hidden;
-}
-.chegg:active{
-    visibility: visible;
-}
-.brainly:active{
+.numerade.active,.chegg.active,.brainly.active{
+    opacity: 1;
     visibility: visible;
 }
 .box{
