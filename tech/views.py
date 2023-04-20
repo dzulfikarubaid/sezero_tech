@@ -33,10 +33,12 @@ def scrape(request):
                 else:
                     result = 'https://cdn.numerade.com/ask_video/{}.mp4'.format(videoUrl)
                     data.append(result)
+    else:
+        error = 'fill the url correctly!'
     data = ''.join(data)
     data = str(data)
     
-    return render(request,"scrape.html", {"data":data})
+    return render(request,"scrape.html", {"data":data},{"error":error})
 
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Post
