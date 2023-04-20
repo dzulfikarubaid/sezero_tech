@@ -34,10 +34,9 @@ def scrape(request):
                 else:
                     result = 'https://cdn.numerade.com/ask_video/{}.mp4'.format(videoUrl)
                     data.append(result)
-        data = ''.join(data)
-        data = str(data)        
-        if key.is_valid():
-            return HttpResponseRedirect(data)
+    data = ''.join(data)
+    data = str(data)
+    
     return render(request,"scrape.html", {"data":data})
 
 from django.shortcuts import render,redirect,get_object_or_404
