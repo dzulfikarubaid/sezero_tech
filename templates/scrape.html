@@ -9,14 +9,17 @@
 <body>
     <div class="box">
         <div class="left-box">
-            <h1 style="font-size: 32px;">Dezolver</h1>
+            <h1 style="font-size: 20px;">Dezolver</h1>
             <a class="nume">Numerade Solver</a>
             <a class="brain">Brainly Solver</a>
             <a class="che">Chegg Solver</a>
         </div>
         <div class="right-box">
             <div class="numerade">
+                <div class="text">
+                    <h1 style="font-size: 20px;">Numerade Solver</h1>
                 <p>Numerade is an online learning platform featuring video solutions to STEM questions created by top educators. Numerade has the world’s largest online library of STEM videos, with over 2 million short. <br><br>By using dezolver, students can get the numerade video solutions for free without a subscription.</p>
+                </div>
                 <form action="" method="post">
                     {% csrf_token %}
                     <input type="text" name="q-url" class="answer">
@@ -90,11 +93,11 @@ html{
 }
 .numerade.active,.chegg.active,.brainly.active{
     opacity: 1;
+    display: flex;
+    flex-direction: column;
     visibility: visible;
-    top: 10px;
-    display: block;
+    top: 40px;
     position: absolute;
-    
 }
 .box{
     width: 100%;
