@@ -33,23 +33,15 @@ html{
 body{
   overflow-x: hidden;
   display: flex;
-  height: fit-content;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-  
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
 .box{
-    /* display: flex;
-    flex-direction: column;
-    margin: 0;
+    position: relative;
     width: 100%;
     height: fit-content;
-    justify-content: center;
-    align-items: center; */
-    width: auto;
     /* padding-top: 40px; */
 }
 .header{
@@ -500,7 +492,7 @@ li:hover ul{
               </div>
           </div>
         </section>
-        <section class="footer" style="background: var(--color1);font-family: 'Poppins';text-align: center;width:1400px;justify-content: center;position: absolute;bottom: 0;">
+        <section class="footer" style="background: var(--color1);font-family: 'Poppins';text-align: center;">
           <p>&#169; Copyright 2023 Sezero.tech</p>
         </section>
       </div>    
@@ -523,7 +515,6 @@ li:hover ul{
     .box-y .submit{
         background: var(--color4);
     }
-
     .work{
         font-family: 'Poppins';
         justify-content: center;
@@ -531,9 +522,8 @@ li:hover ul{
         height: fit-content;
         background-color: var(--color1);
         margin-top: 50px;
-        border-radius: 30px;
-        width: 1400px;
-        padding: 100px;
+        
+        /* padding: 100px 50px; */
     }
     .work h1{
         margin-bottom: 50px;
@@ -585,7 +575,7 @@ li:hover ul{
         /* background-color: var(--color1); */
         padding-top: 100px;
         padding-bottom: 100px;
-        width: 1400px;
+        padding: 100px 30px;
         position: relative;
         justify-content: center;
     }
