@@ -16,7 +16,6 @@ def scrape(request):
         }
         page = requests.get(key, headers=headers)
         soup = BeautifulSoup(page.text, 'html.parser')
-        lists = soup.findAll('script')
         listt = soup.findAll('track')
         listt = str(listt)
         listt = listt.split(" ")
