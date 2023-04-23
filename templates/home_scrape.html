@@ -12,7 +12,7 @@ html{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
 
 }
 :root{
@@ -32,7 +32,7 @@ html{
 
 body{
   overflow-x: hidden;
-  /* display: flex; */
+  display: flex;
   height: fit-content;
   margin: 0;
   padding: 0;
@@ -49,8 +49,7 @@ body{
     height: fit-content;
     justify-content: center;
     align-items: center; */
-    /* width: auto; */
-    text-align: center;
+    width: auto;
     /* padding-top: 40px; */
 }
 .header{
@@ -274,204 +273,6 @@ li:hover ul{
     position: absolute;
     bottom: 0;
 } */
-@media (max-width: 500px){
-    body{
-        display: block;
-        margin: auto;
-        text-align: center;
-    }
-    .content img{
-        width:200px;
-        align-self: center;
-    }
-    .content h1{
-        font-size: 32px;
-        font-weight: 700;
-        text-align: center;
-    }
-    .content .button{
-        text-decoration: none;
-        color: var(--color6);
-        float: right;
-        padding: 0 20px;
-    }
-    .content p{
-        font-size: 14px;
-        /* margin-top: 20px; */
-        text-align: center;
-        padding: 20px;
-    }
-    .content{
-        padding: 30px;
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: center;
-    }
-    .work{
-        padding: 40px;
-        background: var(--color1);
-        width: 100%;
-        margin-top: 50px;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-        border-radius: 20px;
-    }
-    .work-box{
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
-        align-items: center;
-    }
-    .box-1,.box-2,.box-3,.box-4{
-        background: var(--color5);
-        vertical-align: center;
-        width: 200px;
-        height: 200px;
-        padding: 25 40px;
-        border-radius: 20px;
-        box-shadow: var(--shadow);
-    }
-    .work img{
-        width: 60px!important;
-    }
-    .service{
-        padding: 40px;
-        width: 100%;
-        margin-top: 50px;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-    }
-    .ser-box{
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-    }
-    .box-x,.box-y{
-        box-shadow: var(--shadow);
-        padding: 40px;
-    }
-    .service h1{
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-    .service p{
-        text-align: justify!important;
-        margin-bottom: 20px;
-    }
-    .box-x .submit{
-        text-decoration: none;
-        color: var(--color6);
-        background: var(--color1);
-        padding: 12.5px 20px;
-        box-shadow: var(--shadow);
-    }
-    .box-y .submit{
-        text-decoration: none;
-        color: var(--color6);
-        background: rgb(227, 227, 227);
-        padding: 12.5px 20px;
-        box-shadow: var(--shadow);
-    }
-    .footer{
-        width: 100%!important;
-    }
-    nav{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-align: center;
-}
-nav li{
-    text-align: center;
-    list-style: none;
-    /* margin-right: 30px; */
-}
-nav li a{
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 10px 20px;
-    color: var(--color6);
-    border-radius: 30px;
-}
-nav li a:hover{
-    box-shadow: var(--shadow);
-    background: var(--color5);
-    color: var(--color6);
-}
-    .header{
-    display: flex;
-    width: 40px;
-    height: fit-content;
-    /* height: 60px; */
-    justify-content: space-between;
-    position: -webkit-sticky;
-    position: sticky;
-    padding: 15px 30px;
-    top: 50px;
-    border-radius: 25px;
-    z-index: 2;
-    border-style: groove;
-    border-width: 1px;
-    background: 0;
-    border-color: var(--color4);
-    box-shadow: var(--shadow);
-    margin: auto;
-    transition: 0.5s ease-in-out;
-    align-items: center;
-}
-.header:hover{
-    width: 90%;
-    background: 0;
-    border-radius: 30px;
-    border-width: 0;
-    margin-left: auto;
-    margin-right: auto;
-}
-.left{
-    display: flex;
-    flex-direction: row;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s;
-}
-.right{
-    opacity: 0;
-    display:flex ;
-    flex-direction: row;
-    visibility: hidden;
-    transition: 0.01s;
-}
-.header:hover .left,
-.header:hover .right,
-.header.active .left,
-.header.active .right
-{
-    border-style: none;
-    transition-delay: 0.5s;
-    opacity: 1;
-    visibility: visible;
-}
-.reallogo{
-    text-align: center;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--color6);
-    align-self: center;
-    /* margin-right: 40px; */
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    
-}
-}
 
 </style>
 <!DOCTYPE html>
@@ -492,11 +293,9 @@ nav li a:hover{
                 <li><a href="#work">WORK</a></li>
             </nav>
         </section> -->
-        <a href="" class="reallogo">Dezolver</a>
         <div class="header">
-            
             <div class="left">
-                
+                <a href="" class="reallogo">Dezolver</a>
             </div>
             <div class="right">
                 <nav class="menu">
@@ -507,10 +306,10 @@ nav li a:hover{
                 </nav>
             </div>
           </div>
-        <div class="content">
+        <section class="content">
           <div class="text">
-              <h1>Solve the <span style="color: var(--color1);">problems</span> and provide your friends with the <span style="color: var(--color1);">solutions</span>.</h1>
-              <p>Dezolver is a free website to unlock solutions from several websites. Dezolver takes the response data from the web in a legal way. Dezolver never performs hacking or cracking against the web target. The purpose of the dezolver is to help students to easily get answers from paid websites for free.</p>
+              <big>Solve the <span style="color: var(--color1);">problems</span> and provide your friends with the <span style="color: var(--color1);">solutions</span>.</big>
+              <p style="text-align: justify;">Dezolver is a free website to unlock solutions from several websites. Dezolver takes the response data from the web in a legal way. Dezolver never performs hacking or cracking against the web target. The purpose of the dezolver is to help students to easily get answers from paid websites for free.</p>
               <a href="" class="button" style="text-align: center;">let's try <span><svg width="30px" height="30px" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="Arrow / Arrow_Circle_Right">
                   <path id="Vector" d="M13 15L16 12M16 12L13 9M16 12H8M21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12Z" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
@@ -518,7 +317,7 @@ nav li a:hover{
                   </svg></span> </a>
           </div>
             <img src="https://www.linkpicture.com/q/istockphoto-1298375108-612x612-removebg-preview-3.png" alt="">
-        </div>
+        </section>
         <section class="work" id="work">
           <h1>HOW IT WORKS?</h1>
           <div class="work-box">
@@ -569,8 +368,8 @@ nav li a:hover{
           <p>&#169; Copyright 2023 Sezero.tech</p>
         </section>
       </div>    
+
 </body>
-</html>
 
 <style>
     .service p{
@@ -720,4 +519,9 @@ nav li a:hover{
     pye.onclick = function(){
         pye.classList.toggle('active')
     }
+</script>
+<script>
+    if (screen.width <= 699) {
+document.location = "dezolver_hp.html";
+}
 </script>
