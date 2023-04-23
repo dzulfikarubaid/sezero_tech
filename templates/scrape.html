@@ -18,8 +18,8 @@
             
             <div class="numerade">
                 <div class="text">
-                    <h1 style="font-size: 20px;">Numerade Solver</h1>
-                <p>Numerade is an online learning platform featuring video solutions to STEM questions created by top educators. Numerade has the world’s largest online library of STEM videos, with over 2 million short. <br><br>By using dezolver, students can get the numerade video solutions for free without a subscription.</p>
+                    <h1 style="font-size: 16px;text-align: left;">Numerade Solver</h1>
+                <p style="text-align: left;font-size: 14px;margin-top: 20px">Numerade is an online learning platform featuring video solutions to STEM questions created by top educators. Numerade has the world’s largest online library of STEM videos, with over 2 million short. <br><br>By using dezolver, students can get the numerade video solutions for free without a subscription.</p>
                 </div>
                 <form action="" method="post">
                     {% csrf_token %}
@@ -33,7 +33,6 @@
             </div>
             <div class="chegg">
                 <p>COMING SOON</p>
-
             </div>
         </div>
     </div>
@@ -95,21 +94,28 @@ html{
 .numerade.active,.chegg.active,.brainly.active{
     opacity: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 40px;
     visibility: visible;
     top: 40px;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+    /* margin-left: 250px; */
+    width:78%;
     position: absolute;
 }
 .numerade .text{
-    width: 700px;
+    width:30%;
 }
 .numerade form{
     display: flex;
     flex-direction: column;
-    background: var(--color1);
+    background: var(--color5);
+    box-shadow: var(--shadow);
     border-radius: 20px;
     padding: 50px;
+    gap: 20px;
 }
 .box{
     width: 100%;
@@ -135,6 +141,32 @@ html{
 .right-box{
     text-align: center;
     padding: 40px;
-    width: 700px;
+    width: 70%;
+}
+.answer:focus{
+    border: none;
+    border-width: 0;
+    outline: none;
+    padding: 5px 15px;
+}
+.answer{
+    border-radius: 20px;
+    background: rgb(236, 236, 236);
+    border: none;
+    border-width: 0;
+    outline: none;
+    padding: 5px 15px;
+    /* box-shadow: var(--shadow); */
+}
+.button{
+    align-self: center;
+    width: fit-content;
+    border: none;
+    background: var(--color1);
+    padding: 5px 10px;
+    /* border-radius: 10px; */
+    box-shadow: var(--shadow);
+
+
 }
 </style>

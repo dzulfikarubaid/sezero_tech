@@ -30,7 +30,7 @@ urlpatterns = [
     path('', landing),
     path('dezolver/', views.home_scrape),
     path('dezolver-mobile/',views.mobile_dezolver),
-    path('dezolver/numerade/',views.scrape),
+    path('dezolver/solver/',views.scrape),
     path('accounts/', include('allauth.urls')),
     path('blog/',blog_home),
     path('blog/write/',home ),
