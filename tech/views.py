@@ -3,6 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 from django.http import HttpResponseRedirect
 # Create your views here.
+def mobile_dezolver(request):
+    return render(request,"dezolver_hp.html")
 def index(request):
     return render(request,"sezero_tech.html")
 def home_scrape(request):
