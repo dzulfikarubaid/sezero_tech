@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -168,3 +169,4 @@ MEDIA_URL = '/media/'
 
 READ_DOT_ENV_FILE=True
 
+X_FRAME_OPTIONS = "SAMEORIGIN"

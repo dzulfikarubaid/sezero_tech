@@ -9,12 +9,10 @@
 <body>
     <div class="box">
         <div class="left-box">
-            <h1 class="logo" style="font-size: 20px;color: var(--color1);">Dezolver</h1>
-            <nav>
-                <li><a class="nume">Numerade Solver</a></li>
-                <li><a class="brain">Brainly Solver</a></li>
-                <li><a class="che">Chegg Solver</a></li>
-            </nav>
+            <h1 style="font-size: 20px;color: var(--color1);">Dezolver</h1>
+            <a class="nume">Numerade Solver</a>
+            <a class="brain">Brainly Solver</a>
+            <a class="che">Chegg Solver</a>
         </div>
         <div class="right-box">
             
@@ -89,6 +87,10 @@ html{
     --text-color: #1d261d;
     --shadow: 0px 6px 27px -3px rgba(0,0,0,0.1);
 }
+body{
+    text-align: center;
+    display: block;
+}
 .numerade,.chegg,.brainly{
     visibility: hidden;
     opacity: 0;
@@ -97,144 +99,12 @@ html{
     opacity: 1;
     display: flex;
     flex-direction: row;
-    gap: 40px;
     visibility: visible;
-    top: 40px;
     justify-content: center;
     text-align: center;
-    margin-top: 100px;
     /* margin-left: 250px; */
     /* width:78%; */
-    position: absolute;
+    /* position: absolute; */
 }
-.numerade{
-    justify-content: center;
-    align-self: center;
-    width: 100%;
-}
-.numerade .text{
-    width: 500px;
-}
-.numerade form{
-    /* margin-right: 40px; */
-    display: flex;
-    flex-direction: column;
-    background: var(--color5);
-    box-shadow: var(--shadow);
-    border-radius: 20px;
-    padding: 50px;
-    gap: 20px;
-}
-.box{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Poppins';
-    height: 100vh;
-}
-nav{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-nav li{
-    list-style: none;
-}
-.left-box{
-    /* background: var(--color1); */
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    height: fit-content;
-    width: 100%;
-    gap: 20px;
-    padding: 20px 40px;
-    box-shadow: var(--shadow);
-}
-.left-box a{
-    text-decoration: none;
-    cursor: pointer;
-}
-.right-box{
-    text-align: center;
-    /* padding: 40px; */
-    /* width: 70%; */
-    /* margin: 40px; */
-    /* left: 50%; */
-}
-.answer:focus{
-    border: none;
-    border-width: 0;
-    outline: none;
-    padding: 5px 15px;
-}
-.answer{
-    border-radius: 20px;
-    background: rgb(236, 236, 236);
-    border: none;
-    border-width: 0;
-    outline: none;
-    padding: 5px 15px;
-    /* box-shadow: var(--shadow); */
-}
-.button{
-    align-self: center;
-    width: fit-content;
-    border: none;
-    background: var(--color1);
-    padding: 5px 10px;
-    /* border-radius: 10px; */
-    box-shadow: var(--shadow);
-    cursor: pointer;
 
-
-}
-.button:hover{
-    background: var(--color2);
-}
-@media only screen and (max-device-width: 480px){
-    .numerade.active{
-        width: 400px;
-        flex-direction: column;
-    }
-    
-    nav{
-        position: fixed;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 35px;
-        width: 100%;
-        /* margin-bottom: 30px; */
-        background: var(--color5);
-        padding: 20px 0;
-        z-index: 13;
-        box-shadow: 10px 2px 20px -10px #878787;
-    }
-    nav li{
-        list-style: none;
-        margin-right: 0;
-    }
-    nav li a{
-        font-weight:800;
-        font-size: 14px;
-    }
-    .left-box{
-        height: 100px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        margin-top: 20px;
-        gap: 30px;
-    }
-    .logo{
-        margin-left: 0;
-    }
-    .left-box a{
-        text-align: center;
-        margin: 0;
-    }
-}
 </style>
